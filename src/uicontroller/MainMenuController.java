@@ -17,8 +17,18 @@ public class MainMenuController implements Initializable {
     }
     
     @FXML
+    private void createAccount(ActionEvent event) throws IOException {
+            controller.loadScreen(event, "/ui/createaccount.fxml"); 
+    }
+    
+    @FXML
     private void createOrder(ActionEvent event) throws IOException {
             controller.loadScreen(event, "/ui/createorder.fxml"); 
+    }
+    
+    @FXML
+    private void logOut(ActionEvent event) throws IOException {
+            controller.logOut(event);
     }
     
 }

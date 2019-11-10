@@ -54,11 +54,4 @@ public class LoginController implements Initializable {
         }
         
     }
-    
-    private void goToMain()
-    {
-        System.out.println("Transferring to main menu");
-    
-    }
-    
 }

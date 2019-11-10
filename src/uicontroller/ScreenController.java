@@ -11,7 +11,6 @@ import javafx.stage.Stage;
 public class ScreenController  {
 
     public ScreenController() {
-        //this.main = main;
     }
     
     public void loadScreen(ActionEvent event, String screen) throws IOException
@@ -23,5 +22,10 @@ public class ScreenController  {
             
             window.setScene(viewScene);
             window.show();
+    }
+    
+    public void logOut(ActionEvent event) throws IOException
+    {
+        loadScreen(event, "/ui/login.fxml");
     }
 }
