@@ -7,9 +7,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
-public class MainMenuController implements Initializable {
+public class MainMenuController extends ViewController implements Initializable {
 
-    private ScreenController controller = new ScreenController();
+    //private ViewController view = new ViewController();
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -17,18 +17,18 @@ public class MainMenuController implements Initializable {
     }
     
     @FXML
-    private void createAccount(ActionEvent event) throws IOException {
-            controller.loadScreen(event, "/ui/createaccount.fxml"); 
+    private void createAccountClicked(ActionEvent event) throws IOException {
+            loadScreen(event, "/ui/createaccount.fxml"); 
     }
     
     @FXML
-    private void createOrder(ActionEvent event) throws IOException {
-            controller.loadScreen(event, "/ui/createorder.fxml"); 
+    private void createOrderClicked(ActionEvent event) throws IOException {
+            loadScreen(event, "/ui/createorder.fxml"); 
     }
     
     @FXML
-    private void logOut(ActionEvent event) throws IOException {
-            controller.logOut(event);
+    private void logOutClicked(ActionEvent event) throws IOException {
+            loadScreen(event, "/ui/login.fxml");
     }
     
 }

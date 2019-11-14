@@ -1,4 +1,4 @@
-package businesslogic.order;
+package businesslogic.menu;
 
 public class Beverage implements MenuItem{
     

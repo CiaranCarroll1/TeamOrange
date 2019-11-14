@@ -6,10 +6,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-/** 
- *
- * @author Ciaran
- */
 public class RestaurantMS extends Application {
     
     public static void main(String[] args) {

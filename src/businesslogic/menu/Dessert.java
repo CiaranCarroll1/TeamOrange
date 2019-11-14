@@ -1,4 +1,4 @@
-package businesslogic.order;
+package businesslogic.menu;
 
 public class Dessert implements MenuItem{
     

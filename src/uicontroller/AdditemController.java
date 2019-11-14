@@ -7,16 +7,36 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
-public class AdditemController implements Initializable {
+public class AddItemController extends ViewController implements Initializable {
     
-    private ScreenController controller = new ScreenController();
+    //private ViewController view = new ViewController();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     }    
     
     @FXML
-    private void goBack(ActionEvent event) throws IOException {
-            controller.loadScreen(event, "/ui/createorder.fxml");
+    private void goBackClicked(ActionEvent event) throws IOException {
+        loadScreen(event, "/ui/createorder.fxml");
+    }
+    
+     @FXML
+    private void starterClicked(ActionEvent event) throws IOException {
+        loadScreen(event, "/ui/createorder.fxml");
+    }
+    
+    @FXML
+    private void mainClicked(ActionEvent event) throws IOException {
+        loadScreen(event, "/ui/createorder.fxml");
+    }
+    
+    @FXML
+    private void dessertClicked(ActionEvent event) throws IOException {
+        loadScreen(event, "/ui/createorder.fxml");
+    }
+    
+    @FXML
+    private void beverageClicked(ActionEvent event) throws IOException {
+        loadScreen(event, "/ui/createorder.fxml");
     }
 }

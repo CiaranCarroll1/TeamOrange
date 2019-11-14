@@ -8,16 +8,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 
-/**
- *
- * @author Ciaran
- */
-public class LoginController implements Initializable {
+public class LoginController extends ViewController implements Initializable {
     
     @FXML private TextField username;
     @FXML private TextField password;
     private boolean validLogin = false;
-    private ScreenController controller = new ScreenController();
+    //private ViewController view = new ViewController();
     
     
     @Override
@@ -26,10 +22,10 @@ public class LoginController implements Initializable {
     }
     
     @FXML
-    private void attemptLogin(ActionEvent event) throws IOException {
+    private void loginClicked(ActionEvent event) throws IOException {
         if(checkLoginDetails())
         {
-            controller.loadScreen(event, "/ui/mainmenu.fxml");
+            loadScreen(event, "/ui/mainmenu.fxml");
         }
         else
         {

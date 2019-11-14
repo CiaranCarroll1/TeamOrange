@@ -1,15 +1,17 @@
 package businesslogic.order;
 
+import businesslogic.menu.MenuItem;
 import businesslogic.accounts.Account;
 import java.util.ArrayList;
 
 public class Order {
     
-    private Account customer;
+    //private Account customer;
     private ArrayList<MenuItem> orderItems;
     private int orderNumber;
     private int tableNumber;
     private int totalPrice;
+    private boolean completed;
     
     Order(int orderNumber, int tableNumber)
     {
@@ -17,6 +19,7 @@ public class Order {
         this.orderNumber = orderNumber;
         this.tableNumber = tableNumber;
         this.totalPrice = 0;
+        this.completed = false;
     }
     
     public void setTableNumber(int tableNumber)

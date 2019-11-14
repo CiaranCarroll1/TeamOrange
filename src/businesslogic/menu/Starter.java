@@ -1,4 +1,6 @@
-package businesslogic.order;
+package businesslogic.menu;
+
+import businesslogic.menu.MenuItem;
 
 public class Starter implements MenuItem{
     
