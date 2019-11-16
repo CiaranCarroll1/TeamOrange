@@ -1,6 +1,8 @@
 package data;
 
-import businesslogic.accounts.Account;
+import business.logic.account.Account;
+import business.logic.order.Order;
+import business.logic.user.User;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -9,16 +11,13 @@ import java.util.Scanner;
 
 public class DataHandler {
     File accountFile;
+    File userFile;
+    File orderFile;
 
     public DataHandler() {
         this.accountFile = new File("Accounts.txt");
-    }
-    
-    public void addAccount(Account anAccount) throws FileNotFoundException 
-    {
-        ArrayList<Account> accounts = getAccounts();
-        accounts.add(anAccount);
-        writeAccounts(accounts);
+        this.userFile = new File("Users.txt");
+        this.orderFile = new File("Orders.txt");
     }
     
     public ArrayList<Integer> getPhoneNumbers() throws FileNotFoundException
@@ -43,7 +42,7 @@ public class DataHandler {
     {
         ArrayList<Account> accounts = new ArrayList<>();
         String lineFromFile, forename, surname, phoneNumber;
-	String[] split = new String[3];
+	String[] split;
 	Account anAccount;
 		
 	Scanner in = new Scanner(accountFile);
@@ -62,21 +61,67 @@ public class DataHandler {
 	return accounts;	
     }
     
+    public void addAccount(Account anAccount) throws FileNotFoundException 
+    {
+        ArrayList<Account> accounts = getAccounts();
+        accounts.add(anAccount);
+        writeAccounts(accounts);
+    }
+    
     public void writeAccounts(ArrayList<Account> accounts) throws FileNotFoundException
     {	
-        String result = "";
-        Account anAccount;
-
         PrintWriter OutFile = new PrintWriter(accountFile);
-	for(int i = 0; i < accounts.size(); i++)
+	for(Account i: accounts)
 	{
-            result = "";
-            anAccount = accounts.get(i);
-            result += anAccount.getForename() + ",";
-            result += anAccount.getSurname() + ",";
-            result += anAccount.getId();
-            OutFile.println(result);
-		}
-		OutFile.close();
+            OutFile.println(i.toString());
+	}
+	OutFile.close();
+    }
+    
+    public ArrayList<User> getUsers() throws FileNotFoundException
+    {
+        ArrayList<User> users = new ArrayList<>();
+        String lineFromFile, username, password;
+	String[] split;
+	User aUser;
+		
+	Scanner in = new Scanner(userFile);
+        while(in.hasNext())
+        {
+            lineFromFile = in.nextLine();
+            split = lineFromFile.split(",");
+            username = split[0];
+            password = split[1];
+            aUser = new User(username, password);
+            users.add(aUser);
+	}	
+        in.close();
+		
+	return users;	
+    }
+    
+    public ArrayList<Order> getActiveOrders()
+    {
+        ArrayList<Order> orders = new ArrayList<>();
+        
+        
+        return orders;
+    }
+    
+    public void addNewOrder(Order order) throws FileNotFoundException
+    {
+        ArrayList<Order> orders = getActiveOrders();
+        orders.add(order);
+        writeOrders(orders);
+    }
+            
+    public void writeOrders(ArrayList<Order> orders) throws FileNotFoundException
+    {	
+        PrintWriter OutFile = new PrintWriter(orderFile);
+	for(Order i: orders)
+	{
+            OutFile.println(i.toString());
+	}
+	OutFile.close();
     }
 }
