@@ -16,8 +16,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import ui.view.Views;
 
-public class CreateOrderController extends ViewController implements Initializable {
+public class OrderController extends ViewController implements Initializable {
     
     @FXML private Label price;
     @FXML private ScrollPane list;
@@ -32,19 +33,14 @@ public class CreateOrderController extends ViewController implements Initializab
     }
     
     @FXML
-    private void addItemClicked(ActionEvent event) throws IOException {
-        loadScreen(event, "/ui/view/additem.fxml"); 
-    }
-    
-    @FXML
     private void submitOrderClicked(ActionEvent event) throws IOException {
         model.newOrder(customerOrder);
-        loadScreen(event, "/ui/view/mainmenu.fxml");
+        loadView(event, Views.MainMenu);
     }
     
     @FXML
     private void cancelOrderClicked(ActionEvent event) throws IOException {
-        loadScreen(event, "/ui/view/mainmenu.fxml");
+        loadView(event, Views.MainMenu);
     }
     
      @FXML
@@ -93,6 +89,11 @@ public class CreateOrderController extends ViewController implements Initializab
 	}
         
         price.setText(String.format("%.2f", customerOrder.getPrice()));
+    }
+    
+    public void receiveOrder(Order customerOrder)
+    {
+        this.customerOrder = customerOrder;
     }
     
 }

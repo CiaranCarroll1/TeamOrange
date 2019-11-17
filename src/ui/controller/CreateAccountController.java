@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TextField;
+import ui.view.Views;
 
 public class CreateAccountController extends ViewController implements Initializable {
 
@@ -52,7 +53,7 @@ public class CreateAccountController extends ViewController implements Initializ
             a.setContentText("New Account Created!"); 
             a.show();
         
-            loadScreen(event, "/ui/view/mainmenu.fxml");
+            loadView(event, Views.MainMenu);
         }
         }
          catch(NumberFormatException e)
@@ -65,7 +66,6 @@ public class CreateAccountController extends ViewController implements Initializ
     
     @FXML
     private void cancelClicked(ActionEvent event) throws IOException {
-        loadScreen(event, "/ui/view/mainmenu.fxml"); 
-    
+        loadView(event, Views.MainMenu); 
     }
 }

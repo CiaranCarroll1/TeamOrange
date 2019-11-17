@@ -10,8 +10,14 @@ public class Order {
     private int orderNumber;
     private int tableNumber;
     private double totalPrice;
-    private boolean completed;
     private ArrayList<MenuItem> orderItems;
+    
+    public Order(int customerPhoneNumber, int totalPrice)
+    {
+        this.customerPhoneNumber = customerPhoneNumber;
+        this.totalPrice = totalPrice;
+        orderItems = new ArrayList<>();
+    }
     
     public Order(int customerPhoneNumber, int orderNumber, int tableNumber)
     {
@@ -19,14 +25,15 @@ public class Order {
         this.orderNumber = orderNumber;
         this.tableNumber = tableNumber;
         this.totalPrice = 0.0;
-        this.completed = false;
         orderItems = new ArrayList<>();
     }
     
-    public Order(int customerPhoneNumber, int totalPrice)
+    public Order(int customerPhoneNumber, int orderNumber, int tableNumber, int totalPrice)
     {
         this.customerPhoneNumber = customerPhoneNumber;
-        this.totalPrice = totalPrice;
+        this.orderNumber = orderNumber;
+        this.tableNumber = tableNumber;
+        this.totalPrice = 0.0;
         orderItems = new ArrayList<>();
     }
     
@@ -93,7 +100,7 @@ public class Order {
     @Override
     public String toString()
     {
-        String result = customerPhoneNumber + "," + orderNumber + "," + tableNumber + "," + totalPrice + "," + completed;    
+        String result = customerPhoneNumber + "," + orderNumber + "," + tableNumber + "," + totalPrice + ",";    
         
         for(MenuItem i: orderItems)
             result += "," + i.getName();

@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import ui.view.Views;
 
 public class LoginController extends ViewController implements Initializable {
     
@@ -32,7 +33,7 @@ public class LoginController extends ViewController implements Initializable {
         if(model.validateLogin(uname,pword))
         {
             System.out.println("Valid login!");
-            loadScreen(event, "/ui/view/mainmenu.fxml");
+            loadView(event, Views.MainMenu);
         }
         else
         {

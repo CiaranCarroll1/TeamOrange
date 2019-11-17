@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import ui.view.Views;
 
 public class MainMenuController extends ViewController implements Initializable {
 
@@ -16,17 +17,22 @@ public class MainMenuController extends ViewController implements Initializable 
     
     @FXML
     private void createAccountClicked(ActionEvent event) throws IOException {
-            loadScreen(event, "/ui/view/createaccount.fxml"); 
+            loadView(event, Views.CreateAccount); 
     }
     
     @FXML
     private void createOrderClicked(ActionEvent event) throws IOException {
-            loadScreen(event, "/ui/view/createorder.fxml"); 
+            loadView(event, Views.Order); 
+    }
+    
+    @FXML
+    private void viewOrdersClicked(ActionEvent event) throws IOException {
+            loadView(event, Views.ViewOrders); 
     }
     
     @FXML
     private void logOutClicked(ActionEvent event) throws IOException {
-            loadScreen(event, "/ui/view/login.fxml");
+            loadView(event, Views.Login);
     }
     
 }

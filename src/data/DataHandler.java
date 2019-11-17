@@ -17,7 +17,7 @@ public class DataHandler {
     public DataHandler() {
         this.accountFile = new File("Accounts.txt");
         this.userFile = new File("Users.txt");
-        this.orderFile = new File("Orders.txt");
+        this.orderFile = new File("ActiveOrders.txt");
     }
     
     public ArrayList<Integer> getPhoneNumbers() throws FileNotFoundException
@@ -100,12 +100,35 @@ public class DataHandler {
 	return users;	
     }
     
-    public ArrayList<Order> getActiveOrders()
+    public ArrayList<Order> getActiveOrders() throws FileNotFoundException
     {
-        ArrayList<Order> orders = new ArrayList<>();
-        
-        
-        return orders;
+        ArrayList<Order> activeOrders = new ArrayList<>();
+        String lineFromFile;
+        int customerPhoneNumber, orderNumber, tableNumber, totalPrice;
+	String[] split;
+	Order anOrder;
+		
+	Scanner in = new Scanner(orderFile);
+        while(in.hasNext())
+        {
+            lineFromFile = in.nextLine();
+            split = lineFromFile.split(",");
+            customerPhoneNumber = Integer.parseInt(split[0]);
+            orderNumber = Integer.parseInt(split[1]);
+            tableNumber = Integer.parseInt(split[2]);
+            totalPrice = Integer.parseInt(split[3]);
+            
+            anOrder = new Order(customerPhoneNumber,orderNumber,tableNumber,totalPrice);
+            
+            for(int i = 4; i < split.length; i++)
+            {
+                
+            }
+            activeOrders.add(anOrder);
+	}	
+        in.close();
+		
+	return activeOrders;
     }
     
     public void addNewOrder(Order order) throws FileNotFoundException
