@@ -8,20 +8,20 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import ui.view.Views;
 
-public class OrderController extends ViewController implements Initializable {
+public class UserController extends ViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     }
     
     @FXML
-    private void createOrderClicked(ActionEvent event) throws IOException {
-            loadView(event, Views.CreateOrder); 
+    private void createUserClicked(ActionEvent event) throws IOException {
+            loadView(event, Views.CreateUser); 
     }
     
     @FXML
-    private void viewOrdersClicked(ActionEvent event) throws IOException {
-            loadView(event, Views.ViewOrders); 
+    private void editUserClicked(ActionEvent event) throws IOException {
+            loadView(event, Views.EditUser);
     }
     
     @FXML
@@ -33,5 +33,4 @@ public class OrderController extends ViewController implements Initializable {
     private void backClicked(ActionEvent event) throws IOException {
             loadView(event, Views.MainMenu);
     }
-    
 }

@@ -25,11 +25,11 @@ public abstract class ViewController  {
     
     protected void loadViewAndSendOrder(ActionEvent event, Order order) throws IOException
     {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(Views.Order.getValue()));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(Views.CreateOrder.getValue()));
         Parent viewParent = loader.load();
         Scene viewScene = new Scene(viewParent);
              
-        OrderController orderController = loader.getController();
+        CreateOrderController orderController = loader.getController();
         orderController.receiveOrder(order);
  
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();

@@ -1,14 +1,14 @@
 package business.service;
 
 import business.logic.user.User;
-import data.DataHandler;
+import data.UserHandler;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
-public class LoginModel {
+public class LoginService {
     
     ArrayList<User> users;
-    DataHandler handler = new DataHandler();
+    UserHandler handler = new UserHandler();
     
     public boolean validateLogin(String username, String password) throws FileNotFoundException
     {

@@ -3,10 +3,15 @@ package ui.view;
 public enum Views {
   Login("/ui/view/login.fxml"),
   MainMenu("/ui/view/mainmenu.fxml"),
+  Account("/ui/view/account.fxml"),
+  Order("/ui/view/order.fxml"),
+  User("/ui/view/user.fxml"),
   CreateAccount("/ui/view/createaccount.fxml"),
   EditAccount("/ui/view/editaccount.fxml"),
-  Order("/ui/view/order.fxml"),
-  ViewOrders("/ui/view/mainmenu.fxml");
+  CreateOrder("/ui/view/createorder.fxml"),
+  ViewOrders("/ui/view/vieworders.fxml"),
+  CreateUser("/ui/view/createuser.fxml"),
+  EditUser("/ui/view/edituser.fxml");
 
  private String value;
  

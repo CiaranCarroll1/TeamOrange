@@ -1,15 +1,15 @@
 package business.service;
 
 import business.logic.account.Account;
-import data.DataHandler;
+import data.AccountHandler;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
-public class AccountModel {
+public class AccountService {
     
     ArrayList<Account> accounts;
     ArrayList<Integer> phoneNumbers;
-    DataHandler handler = new DataHandler();
+    AccountHandler handler = new AccountHandler();
     
     public boolean validName(String name)
     {

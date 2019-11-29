@@ -1,6 +1,6 @@
 package ui.controller;
 
-import business.service.LoginModel;
+import business.service.LoginService;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -17,11 +17,11 @@ public class LoginController extends ViewController implements Initializable {
     @FXML private TextField username;
     @FXML private PasswordField password;
     private boolean validLogin = false;
-    private LoginModel model;
+    private LoginService service;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        model = new LoginModel();
+        service = new LoginService();
     }
     
     @FXML
@@ -30,7 +30,7 @@ public class LoginController extends ViewController implements Initializable {
         
         String uname = username.getText();
         String pword = password.getText();
-        if(model.validateLogin(uname,pword))
+        if(service.validateLogin(uname,pword))
         {
             System.out.println("Valid login!");
             loadView(event, Views.MainMenu);

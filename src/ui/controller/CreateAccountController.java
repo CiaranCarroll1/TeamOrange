@@ -1,7 +1,7 @@
 package ui.controller;
 
 import business.logic.account.Account;
-import business.service.AccountModel;
+import business.service.AccountService;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -19,11 +19,11 @@ public class CreateAccountController extends ViewController implements Initializ
     @FXML private TextField surname;
     @FXML private TextField phoneNumber;
     private Account newAccount;
-    private AccountModel model;
+    private AccountService service;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        model = new AccountModel();
+        service = new AccountService();
     }
     
     @FXML
@@ -36,7 +36,7 @@ public class CreateAccountController extends ViewController implements Initializ
         String sname = surname.getText();
         int pnumber = Integer.parseInt(phoneNumber.getText()); 
         
-        if(model.alreadyRegistered(pnumber))
+        if(service.alreadyRegistered(pnumber))
         {
             forename.setText("");
             surname.setText("");
@@ -48,7 +48,7 @@ public class CreateAccountController extends ViewController implements Initializ
         else
         {
             newAccount = new Account(pnumber, fname, sname);
-            model.registerAccount(newAccount);
+            service.registerAccount(newAccount);
             a.setAlertType(AlertType.CONFIRMATION);
             a.setContentText("New Account Created!"); 
             a.show();
@@ -66,6 +66,6 @@ public class CreateAccountController extends ViewController implements Initializ
     
     @FXML
     private void cancelClicked(ActionEvent event) throws IOException {
-        loadView(event, Views.MainMenu); 
+        loadView(event, Views.Account); 
     }
 }

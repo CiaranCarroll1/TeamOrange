@@ -12,27 +12,25 @@ public class MainMenuController extends ViewController implements Initializable 
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
     }
     
     @FXML
-    private void createAccountClicked(ActionEvent event) throws IOException {
-            loadView(event, Views.CreateAccount); 
+    private void AccountClicked(ActionEvent event) throws IOException {
+            loadView(event, Views.Account); 
     }
     
     @FXML
-    private void createOrderClicked(ActionEvent event) throws IOException {
+    private void OrderClicked(ActionEvent event) throws IOException {
             loadView(event, Views.Order); 
     }
     
     @FXML
-    private void viewOrdersClicked(ActionEvent event) throws IOException {
-            loadView(event, Views.ViewOrders); 
+    private void UserClicked(ActionEvent event) throws IOException {
+            loadView(event, Views.User); 
     }
     
     @FXML
     private void logOutClicked(ActionEvent event) throws IOException {
             loadView(event, Views.Login);
-    }
-    
+    }  
 }

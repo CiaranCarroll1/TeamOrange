@@ -1,8 +1,8 @@
 package ui.controller;
 
-import business.logic.menu.MenuItem;
 import business.logic.order.Order;
-import business.service.OrderModel;
+import business.service.OrderService;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -19,27 +19,32 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import ui.view.Views;
+import business.logic.menu.IMenuItem;
 
 public class ViewOrdersController extends ViewController implements Initializable {
     
     @FXML private ScrollPane list;
     private Order customerOrder;
-    private OrderModel model;
+    private OrderService service;
     private ArrayList<Order> orders;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        list.setContent(new VBox());
-        model = new OrderModel();
-        orders = model.getActiveOrders();
-        updateList();
+        /*list.setContent(new VBox());
+        service = new OrderService();
+        try {
+            orders = service.getActiveOrders();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(ViewOrdersController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        updateList();*/
     }
     
     @FXML
-    private void cancelClicked(ActionEvent event) throws IOException {
-        loadView(event, Views.MainMenu); 
+    private void goBack(ActionEvent event) throws IOException {
+        loadView(event, Views.Order); 
     }
-    
+    /*
     private void updateList()
     {
 	VBox orderView = (VBox) list.getContent();
@@ -76,5 +81,5 @@ public class ViewOrdersController extends ViewController implements Initializabl
             );
             orderView.getChildren().add(row);
 	}
-    }
+    }*/
 }

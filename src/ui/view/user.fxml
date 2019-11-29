@@ -6,14 +6,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.OrderController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.UserController">
    <children>
-      <Label layoutX="14.0" layoutY="14.0" prefHeight="21.0" prefWidth="165.0" text="Order" />
+      <Label layoutX="14.0" layoutY="14.0" prefHeight="21.0" prefWidth="165.0" text="User" />
       <Button fx:id="logOut" layoutX="512.0" layoutY="9.0" mnemonicParsing="false" onAction="#logOutClicked" text="Log Out" />
       <HBox layoutX="15.0" layoutY="50.0" prefHeight="300.0" prefWidth="570.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#createOrderClicked" prefHeight="300.0" prefWidth="285.0" text="Create Order" />
-            <Button mnemonicParsing="false" onAction="#viewOrdersClicked" prefHeight="300.0" prefWidth="285.0" text="View Orders" />
+            <Button mnemonicParsing="false" onAction="#createUserClicked" prefHeight="300.0" prefWidth="285.0" text="Create User" />
+            <Button mnemonicParsing="false" onAction="#editUserClicked" prefHeight="300.0" prefWidth="285.0" text="Edit User" />
          </children>
       </HBox>
       <Button layoutX="15.0" layoutY="355.0" mnemonicParsing="false" onAction="#backClicked" text="Back" />
