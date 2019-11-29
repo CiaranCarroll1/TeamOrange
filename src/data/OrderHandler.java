@@ -6,59 +6,49 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class OrderHandler {
+public class OrderHandler implements IDataHandler{
     File orderFile;
     
     public OrderHandler() {
-        this.orderFile = new File("ActiveOrders.txt");
+        this.orderFile = new File("Orders.txt");
     }
     
-    public ArrayList<Order> getActiveOrders() throws FileNotFoundException
+    @Override
+    public ArrayList<String> getData()
     {
-        ArrayList<Order> activeOrders = new ArrayList<>();
+        ArrayList<String> strings = new ArrayList<>();
         String lineFromFile;
-        int customerPhoneNumber, orderNumber, tableNumber, totalPrice;
-	String[] split;
-	Order anOrder;
-		
-	Scanner in = new Scanner(orderFile);
-        while(in.hasNext())
-        {
-            lineFromFile = in.nextLine();
-            split = lineFromFile.split(",");
-            customerPhoneNumber = Integer.parseInt(split[0]);
-            orderNumber = Integer.parseInt(split[1]);
-            tableNumber = Integer.parseInt(split[2]);
-            totalPrice = Integer.parseInt(split[3]);
-            
-            anOrder = new Order(customerPhoneNumber,orderNumber,tableNumber,totalPrice);
-            
-            for(int i = 4; i < split.length; i++)
+        try {
+            Scanner in = new Scanner(orderFile);
+            while(in.hasNext())
             {
-                
-            }
-            activeOrders.add(anOrder);
-	}	
-        in.close();
-		
-	return activeOrders;
+                lineFromFile = in.nextLine();
+                strings.add(lineFromFile);
+            }   
+            in.close();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(OrderHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return strings;
     }
     
-    public void addNewOrder(Order order) throws FileNotFoundException
-    {
-        ArrayList<Order> orders = getActiveOrders();
-        orders.add(order);
-        writeOrders(orders);
-    }
-            
-    public void writeOrders(ArrayList<Order> orders) throws FileNotFoundException
+    @Override
+    public void updateData(ArrayList<String> lines)
     {	
-        PrintWriter OutFile = new PrintWriter(orderFile);
-	for(Order i: orders)
-	{
-            OutFile.println(i.toString());
-	}
-	OutFile.close();
+        PrintWriter OutFile = null;
+        try {
+            OutFile = new PrintWriter(orderFile);
+            for(String i: lines)
+            {
+                OutFile.println(i.toString());
+            }   OutFile.close();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(OrderHandler.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            OutFile.close();
+        }
     }
 }

@@ -1,5 +1,7 @@
 package ui.controller;
 
+import business.logic.menu.Beverage;
+import business.logic.menu.Dessert;
 import business.logic.menu.Main;
 import business.logic.order.Order;
 import business.service.OrderService;
@@ -17,6 +19,13 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import ui.view.Views;
 import business.logic.menu.IMenuItem;
+import business.logic.menu.Starter;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 
 public class CreateOrderController extends ViewController implements Initializable {
     
@@ -35,7 +44,25 @@ public class CreateOrderController extends ViewController implements Initializab
     @FXML
     private void submitOrderClicked(ActionEvent event) throws IOException {
         service.newOrder(customerOrder);
+        
+        Alert a = new Alert(Alert.AlertType.NONE);
+        a.setAlertType(Alert.AlertType.CONFIRMATION);
+        a.setContentText("Order submitted"); 
+        a.show();
+        
         loadView(event, Views.Order);
+        
+        /*
+        final Stage dialog = new Stage();
+                dialog.initModality(Modality.APPLICATION_MODAL);
+        Window primaryStage = null;
+                dialog.initOwner(primaryStage);
+                VBox dialogVbox = new VBox(20);
+                dialogVbox.getChildren().add(new Text("This is a Dialog"));
+                Scene dialogScene = new Scene(dialogVbox, 300, 200);
+                dialog.setScene(dialogScene);
+                dialog.show();
+        */
     }
     
     @FXML
@@ -43,21 +70,27 @@ public class CreateOrderController extends ViewController implements Initializab
         loadView(event, Views.Order);
     }
     
+    @FXML
+    private void addStarter(ActionEvent event) throws IOException {
+        customerOrder.addMenuItem(new Starter());
+        updateList();
+    }
+    
      @FXML
-    private void addChicken(ActionEvent event) throws IOException {
+    private void addMain(ActionEvent event) throws IOException {
         customerOrder.addMenuItem(new Main());
         updateList();
     }
     
     @FXML
-    private void addBeef(ActionEvent event) throws IOException {
-        customerOrder.addMenuItem(new Main());
+    private void addDessert(ActionEvent event) throws IOException {
+        customerOrder.addMenuItem(new Dessert());
         updateList();
     }
     
     @FXML
-    private void addBacon(ActionEvent event) throws IOException {
-        customerOrder.addMenuItem(new Main());
+    private void addBeverage(ActionEvent event) throws IOException {
+        customerOrder.addMenuItem(new Beverage());
         updateList();
     }
     
@@ -94,6 +127,7 @@ public class CreateOrderController extends ViewController implements Initializab
     public void receiveOrder(Order customerOrder)
     {
         this.customerOrder = customerOrder;
+        updateList();
     }
     
 }

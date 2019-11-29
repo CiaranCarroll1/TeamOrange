@@ -2,7 +2,6 @@ package ui.controller;
 
 import business.logic.order.Order;
 import business.service.OrderService;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -19,7 +18,6 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import ui.view.Views;
-import business.logic.menu.IMenuItem;
 
 public class ViewOrdersController extends ViewController implements Initializable {
     
@@ -30,25 +28,21 @@ public class ViewOrdersController extends ViewController implements Initializabl
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        /*list.setContent(new VBox());
+        list.setContent(new VBox());
         service = new OrderService();
-        try {
-            orders = service.getActiveOrders();
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(ViewOrdersController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        updateList();*/
+        updateList();
     }
     
     @FXML
     private void goBack(ActionEvent event) throws IOException {
         loadView(event, Views.Order); 
     }
-    /*
+    
     private void updateList()
     {
 	VBox orderView = (VBox) list.getContent();
 	orderView.getChildren().clear();
+        orders = service.getOrders();
 
         for(Order order: orders)
 	{
@@ -70,16 +64,15 @@ public class ViewOrdersController extends ViewController implements Initializabl
             completeOrder.setOnAction(event ->
             {
 		orders.remove(order);
-                model.completeOrder(order);
+                service.completeOrder(order);
                 updateList();
             });
 
             row.getChildren().addAll(
-            new Label(String.valueOf(order.getOrderNumber())),
-            editOrder,
-            completeOrder
-            );
+            new Label(order.toString()),
+                editOrder,
+                completeOrder);
             orderView.getChildren().add(row);
 	}
-    }*/
+    }
 }
