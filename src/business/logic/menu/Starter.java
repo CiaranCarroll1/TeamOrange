@@ -1,8 +1,8 @@
 package business.logic.menu;
 
-import business.logic.menu.MenuItem;
+import business.logic.menu.IMenuItem;
 
-public class Starter implements MenuItem{
+public class Starter implements IMenuItem{
     
     @Override
     public String getName()

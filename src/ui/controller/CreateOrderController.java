@@ -18,7 +18,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import ui.view.Views;
-import business.logic.menu.MenuItem;
+import business.logic.menu.IMenuItem;
 import business.logic.menu.Starter;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -99,7 +99,7 @@ public class CreateOrderController extends ViewController implements Initializab
 	VBox itemView = (VBox) list.getContent();
 	itemView.getChildren().clear();
 
-        for(MenuItem item: customerOrder.getOrderItems())
+        for(IMenuItem item: customerOrder.getOrderItems())
 	{
             HBox row = new HBox();
             row.setPadding(new Insets(0, 0, 5, 0));

@@ -1,6 +1,6 @@
 package business.logic.menu;
 
-public interface MenuItem {
+public interface IMenuItem {
     public String getName();
     public double getCost();
 }

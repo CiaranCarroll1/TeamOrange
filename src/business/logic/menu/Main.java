@@ -1,6 +1,6 @@
 package business.logic.menu;
 
-public class Main implements MenuItem{
+public class Main implements IMenuItem{
     
     @Override
     public String getName()
