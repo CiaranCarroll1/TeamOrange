@@ -2,12 +2,12 @@ package business.service;
 
 import business.logic.menu.factory.MenuItemFactory;
 import business.logic.order.Order;
-import data.OrderHandler;
+import data.OrderHandlerSingleton;
 import java.util.ArrayList;
 
 public class OrderService {
     
-    OrderHandler handler = new OrderHandler();
+    OrderHandlerSingleton handler = OrderHandlerSingleton.getInstance();
     
     public void submitOrder(Order order)
     {
