@@ -16,7 +16,7 @@ public class OrderController extends ViewController implements Initializable {
     
     @FXML
     private void createOrderClicked(ActionEvent event) throws IOException {
-            loadView(event, Views.CreateOrder); 
+            loadView(event, Views.OrderDetails); 
     }
     
     @FXML

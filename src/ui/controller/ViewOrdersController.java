@@ -1,6 +1,7 @@
 package ui.controller;
 
 import business.logic.order.Order;
+import business.logic.payment.PayStrategy;
 import business.service.OrderService;
 import java.io.IOException;
 import java.net.URL;
@@ -46,33 +47,41 @@ public class ViewOrdersController extends ViewController implements Initializabl
 
         for(Order order: orders)
 	{
-            HBox row = new HBox();
-            row.setPadding(new Insets(0, 0, 5, 0));
-            row.setSpacing(20);
-            
-            Button editOrder = new Button("Edit");
-            editOrder.setOnAction(event ->
+            if(order.getStatus() == 0)
             {
-                try {
-                    loadViewAndSendOrder(event, order);
-                } catch (IOException ex) {
-                    Logger.getLogger(ViewOrdersController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            });
-            		
-            Button completeOrder = new Button("Complete");
-            completeOrder.setOnAction(event ->
-            {
-		orders.remove(order);
-                service.completeOrder(order);
-                updateList();
-            });
+                HBox row = new HBox();
+                row.setPadding(new Insets(0, 0, 5, 0));
+                row.setSpacing(20);
 
-            row.getChildren().addAll(
-            new Label(order.toString()),
-                editOrder,
-                completeOrder);
-            orderView.getChildren().add(row);
+                Button editOrder = new Button("Edit");
+                editOrder.setOnAction(event ->
+                {
+                    try {
+                        loadViewAndSendOrder(event, order);
+                    } catch (IOException ex) {
+                        Logger.getLogger(ViewOrdersController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                });
+
+                Button completeOrder = new Button("Complete");
+                completeOrder.setOnAction(event ->
+                {
+                    orders.remove(order);
+                    service.completeOrder(order);
+                    try {
+                        loadViewAndSendPrice(event, order.getPrice());
+                    } catch (IOException ex) {
+                        Logger.getLogger(ViewOrdersController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                });
+
+                row.getChildren().addAll(
+                new Label(order.getOrderNumber() + "\t"),
+                new Label(order.getTableNumber() + "\t"),
+                    editOrder,
+                    completeOrder);
+                orderView.getChildren().add(row);
+            }
 	}
     }
 }

@@ -1,4 +1,6 @@
-package business.logic.menu;
+package business.logic.menu.basic;
+
+import business.logic.menu.IMenuItem;
 
 public class Beverage implements IMenuItem{
     

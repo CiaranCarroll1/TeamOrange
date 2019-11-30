@@ -9,10 +9,28 @@ public class OrderService {
     
     OrderHandler handler = new OrderHandler();
     
-    public void newOrder(Order order)
+    public void submitOrder(Order order)
     {
-        ArrayList<String> lines = handler.getData();
-        lines.add(order.toString());
+        boolean old = false;
+        
+        ArrayList<Order> orders = getOrders();
+        ArrayList<String> lines = new ArrayList<>();
+        
+        for(Order i: orders)
+        {
+            if(i.getOrderNumber() == order.getOrderNumber())
+            {
+                i.updateItems(order.getOrderItems());
+                lines.add(i.toString());
+                old = true;
+            }
+            else
+                lines.add(i.toString());
+        }
+        
+        if(!old)
+            lines.add(order.toString());
+        
         
         handler.updateData(lines);
     }
@@ -22,7 +40,7 @@ public class OrderService {
         
         ArrayList<Order> Orders = new ArrayList<>();
         String lineFromFile;
-        int customerPhoneNumber, orderNumber, tableNumber;
+        int customerPhoneNumber, orderNumber, tableNumber, status;
         double totalPrice;
         String[] split;
         Order anOrder;
@@ -35,10 +53,11 @@ public class OrderService {
                 orderNumber = Integer.parseInt(split[1]);
                 tableNumber = Integer.parseInt(split[2]);
                 totalPrice = Double.parseDouble(split[3]);
+                status = Integer.parseInt(split[4]);
                 
-                anOrder = new Order(customerPhoneNumber,orderNumber,tableNumber,totalPrice);
+                anOrder = new Order(customerPhoneNumber,orderNumber,tableNumber,totalPrice,status);
                 
-                for(int i = 4; i < split.length; i++)
+                for(int i = 5; i < split.length; i++)
                 {
                     anOrder.addMenuItem(factory.getMenuItem(split[i]));
                 }
@@ -50,6 +69,45 @@ public class OrderService {
     
     public void completeOrder(Order order)
     {
+        ArrayList<Order> orders = getOrders();
+        ArrayList<String> lines = new ArrayList<>();
         
+        for(Order i: orders)
+        {
+            if(i.getOrderNumber() == order.getOrderNumber())
+            {
+                i.setStatus(1);
+                i.setOrderNumber(0);
+            }
+            lines.add(i.toString());
+        }
+        
+        handler.updateData(lines);
+    }
+    
+    public int getNextOrderNumber()
+    {
+        int number = 0;
+        boolean found = false;
+        ArrayList<Integer> orderNumbers = getOrderNumbers();
+        
+        for(int i = 1; !found; i++)
+            if(!(orderNumbers.contains(i)))
+            {
+                number = i;
+                found = true;
+            }
+        
+        return number;
+    }
+    
+    public ArrayList<Integer> getOrderNumbers()
+    {
+        ArrayList<Order> orders = getOrders();
+        ArrayList<Integer> orderNumbers = new ArrayList<>();
+        for(Order i: orders)
+            orderNumbers.add(i.getOrderNumber());
+        
+        return orderNumbers;
     }
 }

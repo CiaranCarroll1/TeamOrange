@@ -1,5 +1,6 @@
 package ui.controller;
 
+import business.logic.account.Account;
 import business.logic.order.Order;
 import java.io.IOException;
 import javafx.event.ActionEvent;
@@ -31,6 +32,36 @@ public abstract class ViewController  {
              
         CreateOrderController orderController = loader.getController();
         orderController.receiveOrder(order);
+ 
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+            
+        window.setScene(viewScene);
+        window.show();
+    }
+    
+    protected void loadViewAndSendDetails(ActionEvent event, int accountNumber, int tableNumber) throws IOException
+    {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(Views.CreateOrder.getValue()));
+        Parent viewParent = loader.load();
+        Scene viewScene = new Scene(viewParent);
+             
+        CreateOrderController orderController = loader.getController();
+        orderController.receiveDetails(accountNumber, tableNumber);
+ 
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+            
+        window.setScene(viewScene);
+        window.show();
+    }
+    
+    protected void loadViewAndSendPrice(ActionEvent event, double price) throws IOException
+    {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(Views.Payment.getValue()));
+        Parent viewParent = loader.load();
+        Scene viewScene = new Scene(viewParent);
+             
+        PaymentController paymentController = loader.getController();
+        paymentController.receiveOrder(price);
  
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
             

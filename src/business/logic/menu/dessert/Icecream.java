@@ -1,13 +1,13 @@
-package business.logic.menu;
+package business.logic.menu.dessert;
 
 import business.logic.menu.IMenuItem;
 
-public class Starter implements IMenuItem{
+public class Icecream implements IMenuItem {
     
     @Override
     public String getName()
     {
-        return "Starter";
+        return "Icecream";
     }
     
     @Override

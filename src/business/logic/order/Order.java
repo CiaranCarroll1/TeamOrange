@@ -8,15 +8,9 @@ public class Order{
     private int customerPhoneNumber;
     private int orderNumber;
     private int tableNumber;
+    private int status;
     private double totalPrice;
     private ArrayList<IMenuItem> orderItems;
-    
-    public Order(int customerPhoneNumber, double totalPrice)
-    {
-        this.customerPhoneNumber = customerPhoneNumber;
-        this.totalPrice = totalPrice;
-        orderItems = new ArrayList<>();
-    }
     
     public Order(int customerPhoneNumber, int orderNumber, int tableNumber)
     {
@@ -24,15 +18,17 @@ public class Order{
         this.orderNumber = orderNumber;
         this.tableNumber = tableNumber;
         this.totalPrice = 0.0;
+        this.status = 0;
         orderItems = new ArrayList<>();
     }
     
-    public Order(int customerPhoneNumber, int orderNumber, int tableNumber, double totalPrice)
+    public Order(int customerPhoneNumber, int orderNumber, int tableNumber, double totalPrice, int status)
     {
         this.customerPhoneNumber = customerPhoneNumber;
         this.orderNumber = orderNumber;
         this.tableNumber = tableNumber;
-        this.totalPrice = 0.0;
+        this.totalPrice = totalPrice;
+        this.status = status;
         orderItems = new ArrayList<>();
     }
     
@@ -66,6 +62,16 @@ public class Order{
         return tableNumber;
     }
     
+    public void setStatus(int status)
+    {
+        this.status = status;
+    }
+    
+    public int getStatus()
+    {
+        return status;
+    }
+    
     public void setPrice(double totalPrice)
     {
         this.totalPrice = totalPrice;
@@ -96,10 +102,15 @@ public class Order{
         orderItems.remove(item);
     }
     
+    public void updateItems(ArrayList<IMenuItem> orderItems)
+    {
+        this.orderItems = orderItems;
+    }
+    
     @Override
     public String toString()
     {
-        String result = customerPhoneNumber + "," + orderNumber + "," + tableNumber + "," + totalPrice;    
+        String result = customerPhoneNumber + "," + orderNumber + "," + tableNumber + "," + totalPrice + "," + status;    
         
         for(IMenuItem i: orderItems)
             result += "," + i.getName();

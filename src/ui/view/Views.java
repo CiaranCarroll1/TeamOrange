@@ -8,8 +8,10 @@ public enum Views {
   User("/ui/view/user.fxml"),
   CreateAccount("/ui/view/createaccount.fxml"),
   EditAccount("/ui/view/editaccount.fxml"),
+  OrderDetails("/ui/view/orderdetails.fxml"),
   CreateOrder("/ui/view/createorder.fxml"),
   ViewOrders("/ui/view/vieworders.fxml"),
+  Payment("/ui/view/payment.fxml"),
   CreateUser("/ui/view/createuser.fxml"),
   EditUser("/ui/view/edituser.fxml");
 

@@ -32,29 +32,29 @@ public class CreateAccountController extends ViewController implements Initializ
         Alert a = new Alert(AlertType.NONE);
         
         try {
-        String fname = forename.getText();
-        String sname = surname.getText();
-        int pnumber = Integer.parseInt(phoneNumber.getText()); 
-        
-        if(service.alreadyRegistered(pnumber))
-        {
-            forename.setText("");
-            surname.setText("");
-            phoneNumber.setText("");
-            a.setAlertType(AlertType.ERROR);
-            a.setContentText("That phone number is already attached to an account!"); 
-            a.show();
-        }
-        else
-        {
-            newAccount = new Account(pnumber, fname, sname);
-            service.registerAccount(newAccount);
-            a.setAlertType(AlertType.CONFIRMATION);
-            a.setContentText("New Account Created!"); 
-            a.show();
-        
-            loadView(event, Views.MainMenu);
-        }
+            String fname = forename.getText();
+            String sname = surname.getText();
+            int pnumber = Integer.parseInt(phoneNumber.getText()); 
+
+            if(service.alreadyRegistered(pnumber))
+            {
+                forename.setText("");
+                surname.setText("");
+                phoneNumber.setText("");
+                a.setAlertType(AlertType.ERROR);
+                a.setContentText("That phone number is already attached to an account!"); 
+                a.show();
+            }
+            else
+            {
+                newAccount = new Account(pnumber, fname, sname);
+                service.registerAccount(newAccount);
+                a.setAlertType(AlertType.CONFIRMATION);
+                a.setContentText("New Account Created!"); 
+                a.show();
+
+                loadView(event, Views.MainMenu);
+            }
         }
          catch(NumberFormatException e)
         {

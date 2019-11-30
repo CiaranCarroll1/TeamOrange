@@ -11,24 +11,20 @@
       <Label layoutX="14.0" layoutY="14.0" text="Order" />
       <Button layoutX="180.0" layoutY="355.0" mnemonicParsing="false" onAction="#submitOrderClicked" text="Submit Order" />
       <ScrollPane fx:id="list" layoutX="21.0" layoutY="41.0" prefHeight="304.0" prefWidth="283.0" />
-      <Button layoutX="462.0" layoutY="355.0" mnemonicParsing="false" onAction="#cancelOrderClicked" text="Cancel Order" />
+      <Button layoutX="506.0" layoutY="356.0" mnemonicParsing="false" onAction="#cancelOrderClicked" text="Cancel" />
       <TabPane layoutX="304.0" layoutY="41.0" prefHeight="296.0" prefWidth="283.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Starter">
                <content>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <GridPane>
+                        <GridPane layoutX="22.0" layoutY="39.0" prefWidth="120.0">
                            <children>
-                              <Label text="Starter" />
-                              <Label text="Starter" GridPane.rowIndex="1" />
-                              <Label text="Starter" GridPane.rowIndex="2" />
-                              <Button mnemonicParsing="false" onAction="#addStarter" text="+" GridPane.columnIndex="1" />
-                              <Button mnemonicParsing="false" onAction="#addStarter" text="+" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <Button mnemonicParsing="false" onAction="#addStarter" text="+" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Button mnemonicParsing="false" onAction="#addMenuItemClicked" prefHeight="31.0" prefWidth="100.0" text="Soup" />
+                              <Button mnemonicParsing="false" onAction="#addMenuItemClicked" prefWidth="100.0" text="Wings" GridPane.rowIndex="1" />
+                              <Button mnemonicParsing="false" onAction="#addMenuItemClicked" prefWidth="100.0" text="Ribs" GridPane.rowIndex="2" />
                            </children>
                            <columnConstraints>
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                            </columnConstraints>
                            <rowConstraints>
@@ -37,6 +33,7 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                         </GridPane>
+                        <Label layoutX="14.0" layoutY="14.0" text="Select option below" />
                      </children></AnchorPane>
                </content>
           </Tab>
@@ -44,9 +41,8 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <GridPane>
+                        <GridPane layoutX="22.0" layoutY="39.0" prefWidth="120.0">
                           <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                           </columnConstraints>
                           <rowConstraints>
@@ -55,14 +51,12 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <Label text="Main" />
-                              <Label text="Main" GridPane.rowIndex="1" />
-                              <Label text="Main" GridPane.rowIndex="2" />
-                              <Button mnemonicParsing="false" onAction="#addMain" text="+" GridPane.columnIndex="1" />
-                              <Button mnemonicParsing="false" onAction="#addMain" text="+" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <Button mnemonicParsing="false" onAction="#addMain" text="+" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Button mnemonicParsing="false" onAction="#addMenuItemClicked" prefWidth="100.0" text="Steak" />
+                              <Button mnemonicParsing="false" onAction="#addMenuItemClicked" prefWidth="100.0" text="Salmon" GridPane.rowIndex="1" />
+                              <Button mnemonicParsing="false" onAction="#addMenuItemClicked" prefWidth="100.0" text="Salad" GridPane.rowIndex="2" />
                            </children>
                         </GridPane>
+                        <Label layoutX="10.0" layoutY="14.0" text="Select option below" />
                      </children></AnchorPane>
             </content>
           </Tab>
@@ -70,17 +64,13 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <GridPane>
+                        <GridPane layoutX="26.0" layoutY="39.0" prefWidth="120.0">
                            <children>
-                              <Label text="Dessert" />
-                              <Label text="Dessert" GridPane.rowIndex="1" />
-                              <Label text="Dessert" GridPane.rowIndex="2" />
-                              <Button mnemonicParsing="false" onAction="#addDessert" text="+" GridPane.columnIndex="1" />
-                              <Button mnemonicParsing="false" onAction="#addDessert" text="+" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <Button mnemonicParsing="false" onAction="#addDessert" text="+" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Button mnemonicParsing="false" onAction="#addMenuItemClicked" prefHeight="35.0" prefWidth="100.0" text="Cheesecake" />
+                              <Button mnemonicParsing="false" onAction="#addMenuItemClicked" prefWidth="100.0" text="Pudding" GridPane.rowIndex="1" />
+                              <Button mnemonicParsing="false" onAction="#addMenuItemClicked" prefHeight="24.0" prefWidth="100.0" text="Icecream" GridPane.rowIndex="2" />
                            </children>
                            <columnConstraints>
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                            </columnConstraints>
                            <rowConstraints>
@@ -89,6 +79,7 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                         </GridPane>
+                        <Label layoutX="14.0" layoutY="14.0" text="Select option below" />
                      </children></AnchorPane>
                </content>
             </Tab>
@@ -96,17 +87,13 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <GridPane>
+                        <GridPane layoutX="22.0" layoutY="39.0" prefWidth="120.0">
                            <children>
-                              <Label text="Beverage" />
-                              <Label text="Beverage" GridPane.rowIndex="1" />
-                              <Label text="Beverage" GridPane.rowIndex="2" />
-                              <Button mnemonicParsing="false" onAction="#addBeverage" text="+" GridPane.columnIndex="1" />
-                              <Button mnemonicParsing="false" onAction="#addBeverage" text="+" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <Button mnemonicParsing="false" onAction="#addBeverage" text="+" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Button mnemonicParsing="false" onAction="#addMenuItemClicked" prefWidth="100.0" text="Coke" />
+                              <Button mnemonicParsing="false" onAction="#addMenuItemClicked" prefWidth="100.0" text="Fanta" GridPane.rowIndex="1" />
+                              <Button mnemonicParsing="false" onAction="#addMenuItemClicked" prefWidth="100.0" text="Beer" GridPane.rowIndex="2" />
                            </children>
                            <columnConstraints>
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                            </columnConstraints>
                            <rowConstraints>
@@ -115,6 +102,7 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                         </GridPane>
+                        <Label layoutX="14.0" layoutY="14.0" text="Select option below" />
                      </children></AnchorPane>
                </content>
             </Tab>

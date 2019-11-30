@@ -32,7 +32,6 @@ public class LoginController extends ViewController implements Initializable {
         String pword = password.getText();
         if(service.validateLogin(uname,pword))
         {
-            System.out.println("Valid login!");
             loadView(event, Views.MainMenu);
         }
         else
