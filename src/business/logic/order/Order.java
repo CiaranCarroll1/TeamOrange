@@ -1,7 +1,7 @@
 package business.logic.order;
 
 import java.util.ArrayList;
-import business.logic.menu.IMenuItem;
+import business.logic.menu.MenuItem;
 
 public class Order{
     
@@ -9,7 +9,7 @@ public class Order{
     private int orderNumber;
     private int tableNumber;
     private double totalPrice;
-    private ArrayList<IMenuItem> orderItems;
+    private ArrayList<MenuItem> orderItems;
     
     public Order(int customerPhoneNumber, double totalPrice)
     {
@@ -75,23 +75,23 @@ public class Order{
     {
         double price = 0;
         
-        for(IMenuItem i: orderItems)
+        for(MenuItem i: orderItems)
             price += i.getCost();
         
         return price;
     }
     
-    public void addMenuItem(IMenuItem item)
+    public void addMenuItem(MenuItem item)
     {
         this.orderItems.add(item);
     }
     
-    public ArrayList<IMenuItem> getOrderItems()
+    public ArrayList<MenuItem> getOrderItems()
     {
         return orderItems;
     }
     
-    public void removeItem(IMenuItem item)
+    public void removeItem(MenuItem item)
     {
         orderItems.remove(item);
     }
@@ -101,7 +101,7 @@ public class Order{
     {
         String result = customerPhoneNumber + "," + orderNumber + "," + tableNumber + "," + totalPrice + ",";    
         
-        for(IMenuItem i: orderItems)
+        for(MenuItem i: orderItems)
             result += "," + i.getName();
         return result;
     }
