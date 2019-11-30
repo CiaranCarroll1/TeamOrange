@@ -99,7 +99,7 @@ public class Order{
     @Override
     public String toString()
     {
-        String result = customerPhoneNumber + "," + orderNumber + "," + tableNumber + "," + totalPrice + ",";    
+        String result = customerPhoneNumber + "," + orderNumber + "," + tableNumber + "," + totalPrice;    
         
         for(IMenuItem i: orderItems)
             result += "," + i.getName();
