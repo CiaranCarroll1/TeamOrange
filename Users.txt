@@ -1,3 +1,4 @@
-ciaranc,password
-username,password
-hello,world
+ciaranc,password,1111111111,ciaran,carroll
+username,password,0,user,name
+hello,world,222222222,hell,o
+ronanb97,pass,868818648,ronan,barry
