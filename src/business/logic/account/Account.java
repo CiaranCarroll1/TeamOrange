@@ -1,10 +1,15 @@
 package business.logic.account;
 
+import business.logic.account.discount.BronzeDiscount;
+import business.logic.account.discount.GoldDiscount;
+import business.logic.account.discount.IDiscount;
+import business.logic.account.discount.SilverDiscount;
+
 public class Account {
     private int phoneNumber;
     private String forename;
     private String surname;
-    private String level;
+    private IDiscount discount;
     private int mealCount;
     
     public Account(int phoneNumber, String forename, String surname)
@@ -12,8 +17,17 @@ public class Account {
         this.phoneNumber = phoneNumber;
         this.forename = forename;
         this.surname = surname;
-        this.level = level;
+        this.mealCount = 0;
+        this.discount = new BronzeDiscount();
+    }
+    
+    public Account(int phoneNumber, String forename, String surname, int mealCount, IDiscount discount)
+    {
+        this.phoneNumber = phoneNumber;
+        this.forename = forename;
+        this.surname = surname;
         this.mealCount = mealCount;
+        this.discount = discount;
     }
     
     public void setphoneNumber(int phoneNumber)
@@ -31,17 +45,29 @@ public class Account {
         this.surname = surname;
     }
     
-    public void setLevel(String level)
+    public void setDiscount(IDiscount discount)
     {
-        this.level = level;
+        this.discount = discount;
     }
     
-    public void setMealCount(int mealCount)
+    public void addMealCount()
     {
-        this.mealCount = mealCount;
+        mealCount++;
+        
+        if(mealCount >= 10)
+        {
+            setDiscount(new GoldDiscount());
+        }
+        else if(mealCount >= 5)
+        {
+            setDiscount(new SilverDiscount());
+        }
+        else
+        {
+            //Do nothing
+        }
     }
     
-  
     public int getPhoneNumber()
     {
         return phoneNumber;
@@ -57,9 +83,9 @@ public class Account {
         return surname;
     }
     
-    public String getLevel()
+    public IDiscount getDiscount()
     {
-        return level;
+        return discount;
     }
     
     public int getMealCount()
@@ -70,7 +96,7 @@ public class Account {
     @Override
     public String toString()
     {
-        String result = forename + "," + surname + "," + phoneNumber;    
+        String result = forename + "," + surname + "," + phoneNumber + "," + mealCount + "," + discount.getName();
 
         return result;
     }

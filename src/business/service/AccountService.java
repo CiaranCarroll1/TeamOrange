@@ -1,6 +1,8 @@
 package business.service;
 
 import business.logic.account.Account;
+import business.logic.account.discount.DiscountFactory;
+import business.logic.account.discount.IDiscount;
 import data.AccountHandlerSingleton;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -13,9 +15,11 @@ public class AccountService {
     
     public ArrayList<Account> getAccounts()
     {
+        DiscountFactory factory = new DiscountFactory();
         ArrayList<String> lines = handler.getData();
         ArrayList<Account> accounts = new ArrayList<>();
-        String lineFromFile, forename, surname, phoneNumber;
+        String lineFromFile, forename, surname, phoneNumber, mealCount;
+        IDiscount discount;
 	String[] split;
 	Account anAccount;
 
@@ -26,7 +30,9 @@ public class AccountService {
             forename = split[0];
             surname = split[1];
             phoneNumber = split[2];
-            anAccount = new Account(Integer.parseInt(phoneNumber), forename, surname);
+            mealCount = split[3];
+            discount = factory.getDiscount(split[4]);
+            anAccount = new Account(Integer.parseInt(phoneNumber), forename, surname, Integer.parseInt(mealCount), discount);
             accounts.add(anAccount);
 	}	
 		
@@ -55,9 +61,8 @@ public class AccountService {
         return valid;
     }
      
-    public ArrayList<Integer> getPhoneNumbers() throws FileNotFoundException
+    public ArrayList<Integer> getPhoneNumbers()
     {
-            
         ArrayList<String> lines = handler.getData();
         ArrayList<Integer> phoneNumbers = new ArrayList<>();
         String lineFromFile;
@@ -73,18 +78,15 @@ public class AccountService {
 	return phoneNumbers;
     }
     
-    public boolean alreadyRegistered(int phoneNumber) throws FileNotFoundException
+    public boolean alreadyRegistered(int phoneNumber)
     {
         boolean valid = false;
         phoneNumbers = getPhoneNumbers();
         
         if(phoneNumbers.indexOf(phoneNumber) >= 0)
-        {
             valid = true;
-        }
 
         return valid;
-        
     }
     
     
