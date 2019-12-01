@@ -1,6 +1,6 @@
 package ui.controller;
 
-import business.service.LoginService;
+import business.service.UserService;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -17,11 +17,11 @@ public class LoginController extends ViewController implements Initializable {
     @FXML private TextField username;
     @FXML private PasswordField password;
     private boolean validLogin = false;
-    private LoginService service;
+    private UserService service;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        service = new LoginService();
+        service = new UserService();
     }
     
     @FXML

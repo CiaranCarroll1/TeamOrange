@@ -54,7 +54,7 @@ public class CreateUserController extends ViewController implements Initializabl
             else
             {
                 newUser = new User(uname,pword,pnumber,fname,sname);
-                service.registerUser(newUser);
+                service.addUser(newUser);
                 a.setAlertType(AlertType.CONFIRMATION);
                 a.setContentText("New User Account Created!"); 
                 a.show();
@@ -72,6 +72,6 @@ public class CreateUserController extends ViewController implements Initializabl
     
     @FXML
     private void cancelClicked(ActionEvent event) throws IOException {
-        loadView(event, Views.Account); 
+        loadView(event, Views.User); 
     }
 }
