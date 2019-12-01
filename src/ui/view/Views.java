@@ -14,6 +14,7 @@ public enum Views {
   Payment("/ui/view/payment.fxml"),
   CreateUser("/ui/view/createuser.fxml"),
   ViewUsers("/ui/view/viewusers.fxml");
+  
 
  private String value;
  
