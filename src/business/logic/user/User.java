@@ -37,6 +37,32 @@ public class User {
     {
         return surname;
     }
+     public String setUsername(String newSurname)
+    {   
+        this.surname = newSurname;
+        return username;
+    }
+    
+    public String setPassword(String newPassword)
+    {
+        this.password = newPassword;
+        return password;
+    }
+    public int setPhoneNumber(int newPhoneNumber)
+    {
+        this.phoneNumber = newPhoneNumber;
+        return phoneNumber;
+    }
+    public String setForename(String newForename)
+    {
+        this.forename = newForename;
+        return forename;
+    }
+    public String setSurname(String newSurname)
+    {
+        this.surname = newSurname;
+        return surname;
+    }
     
     @Override
     public String toString()
