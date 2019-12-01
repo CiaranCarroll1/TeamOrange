@@ -9,20 +9,34 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class OrderHandler implements IDataHandler{
-    File orderFile;
+public class OrderHandlerSingleton implements IDataHandler{
+    private static OrderHandlerSingleton connector;
     
-    public OrderHandler() {
-        this.orderFile = new File("Orders.txt");
+    public static OrderHandlerSingleton getInstance() 
+    {    
+        if (connector==null)  
+        {  
+            connector = new  OrderHandlerSingleton();  
+        }  
+        return connector;  
     }
+    
+    private static File getConnection()
+    {  
+        File con = new File("Orders.txt");  
+        return con;  
+
+    }  
     
     @Override
     public ArrayList<String> getData()
     {
+        File con = connector.getConnection();
+        
         ArrayList<String> strings = new ArrayList<>();
         String lineFromFile;
         try {
-            Scanner in = new Scanner(orderFile);
+            Scanner in = new Scanner(con);
             while(in.hasNext())
             {
                 lineFromFile = in.nextLine();
@@ -30,7 +44,7 @@ public class OrderHandler implements IDataHandler{
             }   
             in.close();
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(OrderHandler.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(OrderHandlerSingleton.class.getName()).log(Level.SEVERE, null, ex);
         }
         return strings;
     }
@@ -38,15 +52,17 @@ public class OrderHandler implements IDataHandler{
     @Override
     public void updateData(ArrayList<String> lines)
     {	
+        File con = connector.getConnection();
+        
         PrintWriter OutFile = null;
         try {
-            OutFile = new PrintWriter(orderFile);
+            OutFile = new PrintWriter(con);
             for(String i: lines)
             {
                 OutFile.println(i.toString());
             }   OutFile.close();
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(OrderHandler.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(OrderHandlerSingleton.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             OutFile.close();
         }

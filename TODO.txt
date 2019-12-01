@@ -15,3 +15,10 @@ Order
 User
   + Create/Edit user.
   + Types of User?
+  
+  
+ Interactions within system:
+ - FXML => UIController which extends ViewController (holds loadScreen methods for switching screen).
+ - UIController => Models (Service and Logic).
+ - Service => Data Handler.
+ - Data Handler => File.
