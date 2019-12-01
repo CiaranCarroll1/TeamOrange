@@ -48,5 +48,12 @@ public class UserService {
     {
         handler.addUser(aUser);
     }
+    public ArrayList<User> getAllUsers() throws FileNotFoundException
+    {
+    
+    users = handler.getUsers();
+    
+    return users;
+    }
     
 }

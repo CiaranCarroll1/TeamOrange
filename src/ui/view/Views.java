@@ -13,7 +13,7 @@ public enum Views {
   ViewOrders("/ui/view/vieworders.fxml"),
   Payment("/ui/view/payment.fxml"),
   CreateUser("/ui/view/createuser.fxml"),
-  EditUser("/ui/view/edituser.fxml");
+  ViewUsers("/ui/view/viewusers.fxml");
 
  private String value;
  

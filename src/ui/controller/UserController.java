@@ -21,7 +21,7 @@ public class UserController extends ViewController implements Initializable {
     
     @FXML
     private void editUserClicked(ActionEvent event) throws IOException {
-            loadView(event, Views.EditUser);
+            loadView(event, Views.ViewUsers);
     }
     
     @FXML

@@ -47,7 +47,7 @@ public class ViewOrdersController extends ViewController implements Initializabl
 
         for(Order order: orders)
 	{
-            if(order.getStatus() == 0)
+            if(order.getState() == 0)
             {
                 HBox row = new HBox();
                 row.setPadding(new Insets(0, 0, 5, 0));
