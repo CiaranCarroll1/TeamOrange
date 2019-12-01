@@ -1,7 +1,7 @@
 package business.service;
 
 import business.logic.account.Account;
-import data.AccountHandler;
+import data.AccountHandlerSingleton;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
@@ -9,7 +9,7 @@ public class AccountService {
     
     ArrayList<Account> accounts;
     ArrayList<Integer> phoneNumbers;
-    AccountHandler handler = new AccountHandler();
+    AccountHandlerSingleton handler = new AccountHandlerSingleton();
     
     public boolean validName(String name)
     {

@@ -7,20 +7,38 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class AccountHandler {
-    File accountFile;
+public class AccountHandlerSingleton implements IDataHandler{
     
-    public AccountHandler() {
-        this.accountFile = new File("Accounts.txt");
+    private static AccountHandlerSingleton connector;
+    
+    
+    public static AccountHandlerSingleton getInstance() 
+    {    
+        if (connector==null)  
+        {  
+            connector = new  AccountHandlerSingleton();  
+        }  
+        return connector;  
     }
+    
+    private static File getConnection()
+    {  
+        File con = new File("Accounts.txt");  
+        return con;  
 
+    }
+    
     public ArrayList<Integer> getPhoneNumbers() throws FileNotFoundException
     {
+        
+        
+        File con = connector.getConnection();
+        
         ArrayList<Integer> phoneNumbers = new ArrayList<>();
         String lineFromFile;
 	String[] split;
 	
-	Scanner in = new Scanner(accountFile);
+	Scanner in = new Scanner(con);
         while(in.hasNext())
         {
             lineFromFile = in.nextLine();
@@ -38,8 +56,8 @@ public class AccountHandler {
         String lineFromFile, forename, surname, phoneNumber;
 	String[] split;
 	Account anAccount;
-		
-	Scanner in = new Scanner(accountFile);
+	File con = connector.getConnection();
+	Scanner in = new Scanner(con);
         while(in.hasNext())
         {
             lineFromFile = in.nextLine();
@@ -64,11 +82,22 @@ public class AccountHandler {
     
     public void writeAccounts(ArrayList<Account> accounts) throws FileNotFoundException
     {	
-        PrintWriter OutFile = new PrintWriter(accountFile);
+        File con = connector.getConnection();
+        PrintWriter OutFile = new PrintWriter(con);
 	for(Account i: accounts)
 	{
             OutFile.println(i.toString());
 	}
 	OutFile.close();
+    }
+
+    @Override
+    public ArrayList<String> getData() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void updateData(ArrayList<String> strings) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

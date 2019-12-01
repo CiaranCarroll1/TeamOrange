@@ -4,14 +4,16 @@ public class Account {
     private int phoneNumber;
     private String forename;
     private String surname;
-    //private Level;
+    private String level;
+    private int mealCount;
     
     public Account(int phoneNumber, String forename, String surname)
     {
         this.phoneNumber = phoneNumber;
         this.forename = forename;
         this.surname = surname;
-        //this.level = level;
+        this.level = level;
+        this.mealCount = mealCount;
     }
     
     public void setphoneNumber(int phoneNumber)
@@ -29,6 +31,17 @@ public class Account {
         this.surname = surname;
     }
     
+    public void setLevel(String level)
+    {
+        this.level = level;
+    }
+    
+    public void setMealCount(int mealCount)
+    {
+        this.mealCount = mealCount;
+    }
+    
+  
     public int getPhoneNumber()
     {
         return phoneNumber;
@@ -42,6 +55,16 @@ public class Account {
     public String getSurname()
     {
         return surname;
+    }
+    
+    public String getLevel()
+    {
+        return level;
+    }
+    
+    public int getMealCount()
+    {
+        return mealCount;
     }
     
     @Override
