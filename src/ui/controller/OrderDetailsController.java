@@ -1,5 +1,6 @@
 package ui.controller;
 
+import business.logic.order.recommendation.Recommendation;
 import business.service.OrderService;
 import java.io.IOException;
 import java.net.URL;
@@ -8,6 +9,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
+import business.logic.menu.IMenuItem;
+import java.util.ArrayList;
 import javafx.scene.control.TextField;
 import ui.view.Views;
 
@@ -15,11 +19,19 @@ public class OrderDetailsController extends ViewController implements Initializa
 
     @FXML private TextField phoneNo;
     @FXML private TextField tableNo;
+    @FXML private Label rec1;
+    @FXML private Label rec2;
+    @FXML private Label rec3;
     private OrderService service;
+    private Recommendation recommend= new Recommendation();
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         service = new OrderService();
+        ArrayList<IMenuItem> items = recommend.getRecommendation();
+        rec1.setText(items.get(0).getName());
+        rec2.setText(items.get(1).getName());
+        rec3.setText(items.get(2).getName());
     }
     
     @FXML
