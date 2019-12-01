@@ -1,5 +1,6 @@
 package ui.controller;
 
+import business.logic.account.Account;
 import business.logic.order.recommendation.Recommendation;
 import business.service.OrderService;
 import java.io.IOException;
@@ -11,9 +12,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import business.logic.menu.IMenuItem;
+import business.service.AccountService;
 import java.util.ArrayList;
 import javafx.scene.control.TextField;
 import ui.view.Views;
+import static ui.view.Views.Account;
 
 public class OrderDetailsController extends ViewController implements Initializable {
 
@@ -23,11 +26,13 @@ public class OrderDetailsController extends ViewController implements Initializa
     @FXML private Label rec2;
     @FXML private Label rec3;
     private OrderService service;
+    private AccountService aService;
     private Recommendation recommend= new Recommendation();
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         service = new OrderService();
+        aService = new AccountService();
         ArrayList<IMenuItem> items = recommend.getRecommendation();
         rec1.setText(items.get(0).getName());
         rec2.setText(items.get(1).getName());
@@ -48,16 +53,16 @@ public class OrderDetailsController extends ViewController implements Initializa
             }
             else
             {
-                //if(service.accountExists(pn))
+                Account account = aService.getAccount(pn);
+                if(account.getPhoneNumber() != 0)
                     loadViewAndSendDetails(event, pn, tn);
-                /*else
+                else
                 {
-                    phoneNumber.setText("");
+                    phoneNo.setText("");
                     a.setAlertType(Alert.AlertType.ERROR);
                     a.setContentText("Account does not exist!"); 
                     a.show();
                 }
-                */
             }
         }
          catch(NumberFormatException e)

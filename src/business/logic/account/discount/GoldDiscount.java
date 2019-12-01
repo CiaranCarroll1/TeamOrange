@@ -11,6 +11,6 @@ public class GoldDiscount implements IDiscount{
     @Override
     public double getDiscount()
     {
-        return 20.0;
+        return 0.80;
     }
 }

@@ -5,12 +5,12 @@ public class SilverDiscount implements IDiscount{
     @Override
     public String getName()
     {
-        return "Silver";
+        return "Bronze";
     }
     
     @Override
     public double getDiscount()
     {
-        return 10.0;
+        return 0.90;
     }
 }

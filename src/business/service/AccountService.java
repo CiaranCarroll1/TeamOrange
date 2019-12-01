@@ -107,4 +107,36 @@ public class AccountService {
         handler.updateData(lines);
     }
     
+    public void newOrder(Account account)
+    {
+        ArrayList<Account> accounts = getAccounts();
+        ArrayList<String> lines = new ArrayList<>();
+        
+        for(Account i: accounts)
+        {
+            if(account.getPhoneNumber() == i.getPhoneNumber())
+            {
+                i.addMealCount();
+                lines.add(i.toString());
+            }
+            else
+                lines.add(i.toString());
+        }
+    
+        handler.updateData(lines);
+    }
+    
+    public Account getAccount(int customerPhoneNumber)
+    {
+        ArrayList<Account> accounts = getAccounts();
+        Account account = new Account(0, "0", "0");
+        
+        for(Account i: accounts)
+        {
+            if(customerPhoneNumber == i.getPhoneNumber())
+                account = i;
+        }
+        return account;
+    }
+    
 }
