@@ -2,6 +2,7 @@ package business.service;
 
 import business.logic.menu.factory.MenuItemFactory;
 import business.logic.order.Order;
+import business.logic.order.state.ActiveState;
 import data.OrderHandlerSingleton;
 import java.util.ArrayList;
 
@@ -76,7 +77,7 @@ public class OrderService {
         {
             if(i.getOrderNumber() == order.getOrderNumber())
             {
-                i.setStatus(1);
+                i.changeState();
                 i.setOrderNumber(0);
             }
             lines.add(i.toString());

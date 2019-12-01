@@ -2,13 +2,16 @@ package business.logic.order;
 
 import java.util.ArrayList;
 import business.logic.menu.IMenuItem;
+import business.logic.order.state.ActiveState;
+import business.logic.order.state.CompletedState;
+import business.logic.order.state.OrderState;
 
 public class Order{
     
     private int customerPhoneNumber;
     private int orderNumber;
     private int tableNumber;
-    private int status;
+    private OrderState state;
     private double totalPrice;
     private ArrayList<IMenuItem> orderItems;
     
@@ -18,7 +21,7 @@ public class Order{
         this.orderNumber = orderNumber;
         this.tableNumber = tableNumber;
         this.totalPrice = 0.0;
-        this.status = 0;
+        this.state = new ActiveState();
         orderItems = new ArrayList<>();
     }
     
@@ -28,7 +31,10 @@ public class Order{
         this.orderNumber = orderNumber;
         this.tableNumber = tableNumber;
         this.totalPrice = totalPrice;
-        this.status = status;
+        if(status == 0)
+            this.state = new ActiveState();
+        else
+            this.state = new CompletedState();
         orderItems = new ArrayList<>();
     }
     
@@ -62,14 +68,19 @@ public class Order{
         return tableNumber;
     }
     
-    public void setStatus(int status)
+    public void changeState()
     {
-        this.status = status;
+        state.change(this);
     }
     
-    public int getStatus()
+    public void setState(OrderState state)
     {
-        return status;
+        this.state = state;
+    }
+    
+    public int getState()
+    {
+        return state.getStatus();
     }
     
     public void setPrice(double totalPrice)
@@ -110,7 +121,7 @@ public class Order{
     @Override
     public String toString()
     {
-        String result = customerPhoneNumber + "," + orderNumber + "," + tableNumber + "," + totalPrice + "," + status;    
+        String result = customerPhoneNumber + "," + orderNumber + "," + tableNumber + "," + totalPrice + "," + state.getStatus();    
         
         for(IMenuItem i: orderItems)
             result += "," + i.getName();
