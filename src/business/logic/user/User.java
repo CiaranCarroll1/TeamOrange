@@ -3,11 +3,17 @@ package business.logic.user;
 public class User {
     private String username;
     private String password;
+    private int phoneNumber;
+    private String forename;
+    private String surname;
     
-    public User(String username, String password)
+    public User(String username, String password, int phoneNumber, String forename, String surname)
     {
         this.username = username;
         this.password = password;
+        this.phoneNumber = phoneNumber;
+        this.forename = forename;
+        this.surname = surname;
     }
     
     public String getUsername()
@@ -19,11 +25,23 @@ public class User {
     {
         return password;
     }
+    public int getPhoneNumber()
+    {
+        return phoneNumber;
+    }
+    public String getForename()
+    {
+        return forename;
+    }
+    public String getSurname()
+    {
+        return surname;
+    }
     
     @Override
     public String toString()
     {
-        String result = username + "," + password;
+        String result = username + "," + password + "," + phoneNumber + "," + forename + "," + surname;
         
         return result;
     }
