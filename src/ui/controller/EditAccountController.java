@@ -50,16 +50,16 @@ public class EditAccountController extends ViewController implements Initializab
         for(Account account: accounts)
 	{
             
-        HBox row = new HBox();
-        row.setPadding(new Insets(0, 0, 5, 0));
-        row.setSpacing(40);
+            HBox row = new HBox();
+            row.setPadding(new Insets(0, 0, 5, 0));
+            row.setSpacing(40);
 
-        Button editUserAccount = new Button("Edit User Account");
+            Button edit = new Button("Edit");
 
-        row.getChildren().addAll(
-        new Label(account.getForename() + "\t" + "\t"),
-            editUserAccount);
-        UserView.getChildren().add(row);
+            row.getChildren().addAll(
+            new Label(account.getForename() + "\t" + "\t"),
+                edit);
+            UserView.getChildren().add(row);
 	}
         
     }

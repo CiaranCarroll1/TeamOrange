@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
@@ -8,6 +9,11 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.LoginController">
     <children>
+      <ImageView fitHeight="400.0" fitWidth="600.0">
+         <image>
+            <Image url="@../../images/background.jpg" />
+         </image>
+      </ImageView>
         <Button fx:id="button" layoutX="272.0" layoutY="247.0" onAction="#loginClicked" text="Login" />
         <Label fx:id="label" layoutX="200.0" layoutY="134.0" minHeight="16" minWidth="69" text="Welcome to RestaurantMS 1.0" />
       <GridPane layoutX="200.0" layoutY="170.0">
