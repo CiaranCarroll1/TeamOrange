@@ -25,13 +25,15 @@ public class UserService {
       for(String line: userStrings)
             {
                 split = line.split(",");
-                username = split[0];
-                password = split[1];
-                phoneNumber = Integer.parseInt(split[2]);
-                forename = split[3];
-                surname = split[4];
+                username = split[0];                            //take username from file
+                password = split[1];                            //take passowrd from file
+                phoneNumber = Integer.parseInt(split[2]);       //take phonenumber from file needs to be converted for data manipulation
+                forename = split[3];                            // takes users forename from file
+                surname = split[4];                             //takes users surname from file
                 
                 aUser = new User(username,password,phoneNumber,forename,surname);
+                
+                                                                //new user created.......more details to be implemented, address etc.
                 
                 
                 Users.add(aUser);
@@ -40,10 +42,10 @@ public class UserService {
 	return Users;	
     }
    
-    public ArrayList<Integer> getPhoneNumbers() throws FileNotFoundException
+    public ArrayList<Integer> getPhoneNumbers() throws FileNotFoundException //used to get all registerd phone numbers as staff cannnot have the same
     {
          ArrayList<String> userStrings = handler.getData();
-         ArrayList<Integer> pnumbers = new ArrayList<>();
+         ArrayList<Integer> pnumbers = new ArrayList<>();     //string of parsed data from file
         String lineFromFile;
         int phoneNumber;
 	String[] split;
@@ -52,7 +54,7 @@ public class UserService {
       for(String line: userStrings)
             {
                 split = line.split(",");
-                phoneNumber = Integer.parseInt(split[2]);
+                phoneNumber = Integer.parseInt(split[2]);  //number is parsed for data manipulation in future
 
                 pnumbers.add(phoneNumber);
             }
@@ -60,7 +62,7 @@ public class UserService {
 	return pnumbers;	
     }
     
-      public void addUser(User aUser) throws FileNotFoundException 
+      public void addUser(User aUser) throws FileNotFoundException   //used to add/create a new user
     {
         ArrayList<User> users = getUsers();
         users.add(aUser);
@@ -70,10 +72,10 @@ public class UserService {
             lines.add(i.toString());
         });
         
-        handler.updateData(lines);
+        handler.updateData(lines);  //sends data back to handler to update file
     }
 
-    public boolean validName(String name)
+    public boolean validName(String name)  //used when loggin in to see if it is an actual name not gibberish
     {
         boolean valid = false;    
         String namePat = "[a-zA-Z]+";
@@ -84,20 +86,20 @@ public class UserService {
         return valid;
     }
     
-     public boolean validPhoneNumber(String phoneNumber)
+     public boolean validPhoneNumber(String phoneNumber) //checks to see if the number is valid ie an actual phone number
     {
         boolean valid = false;
-        String pnPattern = "[0-9]+";
+        String pnPattern = "[0-9]+";  //payttern for standard phone number in ireland
         
         if(phoneNumber.matches(pnPattern))
             valid = true;
         
         return valid;
     }
-     public boolean alreadyRegistered(int phoneNumber) throws FileNotFoundException
+     public boolean alreadyRegistered(int phoneNumber) throws FileNotFoundException 
     {
-        boolean valid = false;
-        ArrayList<Integer> phoneNumbers = getPhoneNumbers();
+        boolean valid = false;      
+        ArrayList<Integer> phoneNumbers = getPhoneNumbers();  //checks available data to see if the user is already registered
         
         if(phoneNumbers.indexOf(phoneNumber) >= 0)
             valid = true;
@@ -105,7 +107,7 @@ public class UserService {
         return valid;
     }
      
-       public boolean validateLogin(String username, String password) throws FileNotFoundException
+       public boolean validateLogin(String username, String password) throws FileNotFoundException //used for staf to login
     {
         boolean valid = false;
         ArrayList<User> users;

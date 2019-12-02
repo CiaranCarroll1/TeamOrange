@@ -25,12 +25,12 @@ public class ViewUsersController extends ViewController implements Initializable
     @FXML private ScrollPane list;
     private User user;
     private UserService service;
-    private ArrayList<User> users;
+    private ArrayList<User> users; //stores user data as an array list of their data type
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         list.setContent(new VBox());
-        service = new UserService();
+        service = new UserService(); //connection to user service
         try {
             updateList();
         } catch (FileNotFoundException ex) {
@@ -40,10 +40,10 @@ public class ViewUsersController extends ViewController implements Initializable
     
     @FXML
     private void goBack(ActionEvent event) throws IOException {
-        loadView(event, Views.User); 
+        loadView(event, Views.User);  //sends user back a layer
     }
     
-    private void updateList() throws FileNotFoundException
+    private void updateList() throws FileNotFoundException //updates the lsit displayed of users
     {
 	VBox UserView = (VBox) list.getContent();
 	UserView.getChildren().clear();
@@ -56,13 +56,13 @@ public class ViewUsersController extends ViewController implements Initializable
                 row.setPadding(new Insets(0, 0, 5, 0));
                 row.setSpacing(40);
                 
-                Button editUserAccount = new Button("Edit User Account");
+                Button editUserAccount = new Button("Edit User Account"); //yet to be implemented....used to edit specific user
                 
 
 
 
                 row.getChildren().addAll(
-                new Label(user.getUsername() + "\t" + "\t"),
+                new Label(user.getUsername() + "\t" + "\t"), // labels will contain a singler user and its username
                     editUserAccount);
                 UserView.getChildren().add(row);
             

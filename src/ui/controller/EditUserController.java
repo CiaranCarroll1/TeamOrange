@@ -9,6 +9,6 @@ package ui.controller;
  *
  * @author ronan
  */
-public class EditUserController {
+public class EditUserController { //still to be implemented
     
 }

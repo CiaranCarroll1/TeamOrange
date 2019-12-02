@@ -9,16 +9,16 @@ public class User {
     
     public User(String username, String password, int phoneNumber, String forename, String surname)
     {
-        this.username = username;
-        this.password = password;
-        this.phoneNumber = phoneNumber;
-        this.forename = forename;
-        this.surname = surname;
+        this.username = username;         //username.....used for login
+        this.password = password;         //password.....used for login
+        this.phoneNumber = phoneNumber;   //phonenumber.....important contact detail
+        this.forename = forename;         //name........personal identification
+        this.surname = surname;           //surname........personal identification
     }
     
     public String getUsername()
     {
-        return username;
+        return username;  
     }
     
     public String getPassword()
@@ -65,7 +65,7 @@ public class User {
     }
     
     @Override
-    public String toString()
+    public String toString()  //used for formatting when returning data to textfile
     {
         String result = username + "," + password + "," + phoneNumber + "," + forename + "," + surname;
         

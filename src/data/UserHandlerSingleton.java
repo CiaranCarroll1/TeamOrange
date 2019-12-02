@@ -29,7 +29,7 @@ public class UserHandlerSingleton implements IDataHandler{
     }  
     
     @Override
-    public ArrayList<String> getData()
+    public ArrayList<String> getData() // returns all data as a stinrg....all user data from the tect file
     {
         File con = connector.getConnection();
         
@@ -50,7 +50,7 @@ public class UserHandlerSingleton implements IDataHandler{
     }
     
     @Override
-    public void updateData(ArrayList<String> lines)
+    public void updateData(ArrayList<String> lines) // used to update the user text file with details
     {	
         File con = connector.getConnection();
         
