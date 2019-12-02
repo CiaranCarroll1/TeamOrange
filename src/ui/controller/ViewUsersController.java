@@ -47,7 +47,7 @@ public class ViewUsersController extends ViewController implements Initializable
     {
 	VBox UserView = (VBox) list.getContent();
 	UserView.getChildren().clear();
-        users = service.getAllUsers();
+        users = service.getUsers();
 
         for(User user: users)
 	{
@@ -57,8 +57,7 @@ public class ViewUsersController extends ViewController implements Initializable
                 row.setSpacing(40);
                 
                 Button editUserAccount = new Button("Edit User Account");
-                
-
+               
                 row.getChildren().addAll(
                 new Label(user.getUsername() + "\t" + "\t"),
                     editUserAccount);

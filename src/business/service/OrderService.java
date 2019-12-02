@@ -1,17 +1,19 @@
 package business.service;
 
+import business.logic.account.Account;
 import business.logic.menu.factory.MenuItemFactory;
 import business.logic.order.Order;
-import business.logic.order.state.ActiveState;
 import data.OrderHandlerSingleton;
 import java.util.ArrayList;
 
 public class OrderService {
     
+    AccountService service;
     OrderHandlerSingleton handler = OrderHandlerSingleton.getInstance();
     
     public void submitOrder(Order order)
     {
+        service = new AccountService();
         boolean old = false;
         
         ArrayList<Order> orders = getOrders();
@@ -26,7 +28,9 @@ public class OrderService {
                 old = true;
             }
             else
+            {
                 lines.add(i.toString());
+            }
         }
         
         if(!old)
@@ -37,11 +41,13 @@ public class OrderService {
     }
 
     public ArrayList<Order> getOrders() {
+        service = new AccountService();
         ArrayList<String> orderStrings = handler.getData();
         
         ArrayList<Order> Orders = new ArrayList<>();
         String lineFromFile;
-        int customerPhoneNumber, orderNumber, tableNumber, status;
+        Account account;
+        int orderNumber, tableNumber, status;
         double totalPrice;
         String[] split;
         Order anOrder;
@@ -50,13 +56,13 @@ public class OrderService {
         for(String line: orderStrings)
             {
                 split = line.split(",");
-                customerPhoneNumber = Integer.parseInt(split[0]);
+                account = service.getAccount(Integer.parseInt(split[0]));
                 orderNumber = Integer.parseInt(split[1]);
                 tableNumber = Integer.parseInt(split[2]);
                 totalPrice = Double.parseDouble(split[3]);
                 status = Integer.parseInt(split[4]);
                 
-                anOrder = new Order(customerPhoneNumber,orderNumber,tableNumber,totalPrice,status);
+                anOrder = new Order(account,orderNumber,tableNumber,totalPrice,status);
                 
                 for(int i = 5; i < split.length; i++)
                 {
@@ -72,6 +78,7 @@ public class OrderService {
     {
         ArrayList<Order> orders = getOrders();
         ArrayList<String> lines = new ArrayList<>();
+        service.newOrder(order.getAccount());
         
         for(Order i: orders)
         {
@@ -111,4 +118,5 @@ public class OrderService {
         
         return orderNumbers;
     }
+    
 }

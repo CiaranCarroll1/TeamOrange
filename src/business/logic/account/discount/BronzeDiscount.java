@@ -11,6 +11,6 @@ public class BronzeDiscount implements IDiscount{
     @Override
     public double getDiscount()
     {
-        return 5.0;
+        return 0.95;
     }
 }

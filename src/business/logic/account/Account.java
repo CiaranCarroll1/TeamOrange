@@ -83,9 +83,9 @@ public class Account {
         return surname;
     }
     
-    public IDiscount getDiscount()
+    public double getDiscount()
     {
-        return discount;
+        return discount.getDiscount();
     }
     
     public int getMealCount()
