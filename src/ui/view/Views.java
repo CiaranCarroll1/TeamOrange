@@ -12,7 +12,7 @@ public enum Views {
   CreateOrder("/ui/view/createorder.fxml"),
   ViewOrders("/ui/view/vieworders.fxml"),
   Payment("/ui/view/payment.fxml"),
-  CreateUser("/ui/view/createuser.fxml"),
+  CreateUser("/ui/view/createUser.fxml"),
   ViewUsers("/ui/view/viewusers.fxml");
   
 
